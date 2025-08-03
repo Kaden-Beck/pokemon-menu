@@ -1,3 +1,8 @@
+import PokemonNutrients from "./PokemonNutrients";
+import TypeData from "./TypeData.mjs";
+const baseURL = import.meta.env.POKEMON_ENDPOINT
+
+
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -9,7 +14,7 @@ function convertToJson(res) {
 export default class PokemonDetails {
     constructor(pokemonId) {
         this.pokemonId = pokemonId;
-        this.endpointURL = `https://pokeapi.co/api/v2/pokemon/${this.pokemonId}`;
+        this.endpointURL = `${baseURL}${this.pokemonId}`;
     }
 
     async init() {
@@ -54,7 +59,7 @@ export default class PokemonDetails {
 
 function pokemonDetailsTemplate(pokemon) {
 
-    
+
 //   document.querySelector('h2').textContent = product.Category.charAt(0).toUpperCase() + product.Category.slice(1);
 //   document.querySelector('#p-brand').textContent = product.Brand.Name;
 //   document.querySelector('#p-name').textContent = product.NameWithoutBrand;

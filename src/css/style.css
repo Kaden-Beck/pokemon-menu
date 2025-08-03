@@ -1,0 +1,20 @@
+:root {
+  --font-body: "Pixelify Sans", Helvetica, sans-serif;
+  --font-header: "Noto Sans", "Arial Narrow Bold", sans-serif;
+  /* Colors */
+  --poke-yellow: #ffcb05;
+  --poke-blue: #3d7dca;
+  --poke-darkblue: #003a70;
+  --poke-red: #ee1515;
+  --poke-black: #222224;
+  --poke-white: #f0f0f0;
+}
+
+header {
+  display: flex;
+
+  & a {
+    display: block;
+    text-decoration: none;
+  }
+}

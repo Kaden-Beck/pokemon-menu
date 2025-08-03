@@ -55,6 +55,21 @@ export default class PokemonDetails {
     renderPokemonDetails() {
         pokemonDetailsTemplate(this.pokemon);
     }
+
+    // Function to display sprites of pokemons types
+    async buildTypeSprites(types) {
+        const typeData = new TypeData();
+        let typeSprites = ``;
+        types.forEach(typeData => {
+            let typeInfo = typeData.getTypeByName(typeData);
+            let typeSprites = `<img 
+                src="${typeInfo.spriteURL}" 
+                alt="Sprite of ${typeInfo.name}" 
+                height="40">`;
+            typeSprites += typeSprites;
+        });   
+        return typeSprites;
+    }
 }
 
 function pokemonDetailsTemplate(pokemon) {

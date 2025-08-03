@@ -1,5 +1,3 @@
-
-
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -8,19 +6,20 @@ function convertToJson(res) {
   }
 }
 
-export default class PokemonData {
+export default class PokemonDetails {
     constructor(pokemonId) {
         this.pokemonId = pokemonId;
         this.endpointURL = `https://pokeapi.co/api/v2/pokemon/${this.pokemonId}`;
     }
 
     async init() {
-        this.pokemonData = await getPokemonData(this.endpointURL);
+        this.pokemon = await getPokemonData(this.endpointURL);
         this.flavorText = await getFlavorText();
-        this.types = await getTypes(this.pokemonData.types);
-        this.name = this.pokemonData.name;
-        this.weight = parseInt(this.pokemonData.weight);
-        this.spriteURL = this.pokemonData.sprites.front_default;
+        this.types = await getTypes(this.pokemon.types);
+        this.name = this.pokemon.name;
+        this.weight = parseInt(this.pokemon.weight);
+        this.spriteURL = this.pokemon.sprites.front_default;
+        this.renderPokemonDetails();
     }
 
     async getPokemonData(URL) {
@@ -31,7 +30,7 @@ export default class PokemonData {
     }
 
     async getFlavorText() {
-        const response = await fetch(this.pokemonData.species.url);
+        const response = await fetch(this.pokemon.species.url);
         const speciesData = await convertToJson(response);
         let flavorText = speciesData.flavor_text_entries[1].flavor_text;
         
@@ -48,4 +47,28 @@ export default class PokemonData {
         return types;
     }
 
+    renderPokemonDetails() {
+        pokemonDetailsTemplate(this.pokemon);
+    }
+}
+
+function pokemonDetailsTemplate(pokemon) {
+
+    
+//   document.querySelector('h2').textContent = product.Category.charAt(0).toUpperCase() + product.Category.slice(1);
+//   document.querySelector('#p-brand').textContent = product.Brand.Name;
+//   document.querySelector('#p-name').textContent = product.NameWithoutBrand;
+
+//   const productImage = document.querySelector('#p-image');
+//   productImage.src = product.Images.PrimaryExtraLarge;
+//   productImage.alt = product.NameWithoutBrand;
+//   const euroPrice = new Intl.NumberFormat('de-DE',
+//     {
+//       style: 'currency', currency: 'EUR',
+//     }).format(Number(product.FinalPrice) * 0.85);
+//   document.querySelector('#p-price').textContent = `${euroPrice}`;
+//   document.querySelector('#p-color').textContent = product.Colors[0].ColorName;
+//   document.querySelector('#p-description').innerHTML = product.DescriptionHtmlSimple;
+
+//   document.querySelector('#add-to-cart').dataset.id = product.Id;
 }

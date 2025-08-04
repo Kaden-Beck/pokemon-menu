@@ -1,103 +1,98 @@
 {
-    "normal" : {
-        "name" : "normal",
-        "id" : 1,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/1.png",
-        "foodID" : "0"
-    },
-    "fight" : {
-        "name" : "fight",
-        "id" : 2,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/2.png",
-        "foodID" : "0"
-
-    },
-    "flying" : {
-        "name" : "flying",
-        "id" : 3,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/3.png",
-        "foodID" : "0"
-
-    },
-    "poison" : {
-        "name" : "poison",
-        "id" : 4,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/4.png",
-        "foodID" : "0"
-        
-    },
-    "ground" : {
-        "name" : "ground",
-        "id" : 5,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/5.png",
-        "foodID" : "0"
-
-    },
-    "rock" : {
-        "name" : "rock",
-        "id" : 6,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/6.png",
-        "foodID" : "0"
-        
-    },
-    "bug" : {
-        "name" : "bug",
-        "id" : 7,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/7.png",
-        "foodID" : "0"
-    },
-    "ghost" : {
-        "name" : "ghost",
-        "id" : 8,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/8.png",
-        "foodID" : "0"
-    },
-    "steel" : {
-        "name" : "steel",
-        "id" : 9,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/9.png",
-        "foodID" : "0"
-    },
-    "fire" : {
-        "name" : "fire",
-        "id" : 10,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/10.png",
-        "foodID" : "0"
-    },
-    "water" : {
-        "name" : "water",
-        "id" : 11,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/11.png",
-        "foodID" : "0"
-    },
-    "grass" : {
-        "name" : "grass",
-        "id" : 12,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/12.png",
-        "foodID" : "0"
-    },    
-    "electric" : {
-        "name" : "electric",
-        "id" : 13,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/13.png",
-        "foodID" : "0"
-    },
-    "psychic" : {
-        "name" : "psychic",
-        "id" : 14,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/14.png",
-        "foodID" : "0"
-    },
-    "ice" : {
-        "name" : "ice",
-        "id" : 15,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/15.png",
-        "foodID" : "0"
-    },
-    "dragon" : {
-        "name" : "dragon",
-        "id" : 16,
-        "spriteURL" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/16.png",
-        "foodID" : "0"
-    }
+  "normal": {
+    "name": "normal",
+    "id": 1,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/1.png",
+    "foodID": "0"
+  },
+  "fight": {
+    "name": "fight",
+    "id": 2,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/2.png",
+    "foodID": "0"
+  },
+  "flying": {
+    "name": "flying",
+    "id": 3,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/3.png",
+    "foodID": "0"
+  },
+  "poison": {
+    "name": "poison",
+    "id": 4,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/4.png",
+    "foodID": "0"
+  },
+  "ground": {
+    "name": "ground",
+    "id": 5,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/5.png",
+    "foodID": "0"
+  },
+  "rock": {
+    "name": "rock",
+    "id": 6,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/6.png",
+    "foodID": "0"
+  },
+  "bug": {
+    "name": "bug",
+    "id": 7,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/7.png",
+    "foodID": "0"
+  },
+  "ghost": {
+    "name": "ghost",
+    "id": 8,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/8.png",
+    "foodID": "0"
+  },
+  "steel": {
+    "name": "steel",
+    "id": 9,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/9.png",
+    "foodID": "0"
+  },
+  "fire": {
+    "name": "fire",
+    "id": 10,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/10.png",
+    "foodID": "0"
+  },
+  "water": {
+    "name": "water",
+    "id": 11,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/11.png",
+    "foodID": "0"
+  },
+  "grass": {
+    "name": "grass",
+    "id": 12,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/12.png",
+    "foodID": "0"
+  },
+  "electric": {
+    "name": "electric",
+    "id": 13,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/13.png",
+    "foodID": "0"
+  },
+  "psychic": {
+    "name": "psychic",
+    "id": 14,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/14.png",
+    "foodID": "0"
+  },
+  "ice": {
+    "name": "ice",
+    "id": 15,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/15.png",
+    "foodID": "0"
+  },
+  "dragon": {
+    "name": "dragon",
+    "id": 16,
+    "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/16.png",
+    "foodID": "0"
+  }
 }

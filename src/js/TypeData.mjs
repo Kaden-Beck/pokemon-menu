@@ -10,8 +10,8 @@ export default class TypeData {
     }   
 
     async getTypeByName(typeName) {
-        const typeName =  this.typeData[typeName];
-        return typeName;
+        const t =  this.typeData[typeName];
+        return t;
     }
 
 }

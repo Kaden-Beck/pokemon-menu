@@ -20,11 +20,11 @@ export default class PokemonDetails {
     async init() {
         this.pokemon = await this.getPokemonData(this.endpointURL);
         this.flavorText = await this.getFlavorText();
-        // this.types = await this.getTypes(this.pokemon.types);
+        this.typeNames = this.getTypes();
         this.name = this.pokemon.name;
         this.weight = parseInt(this.pokemon.weight);
         this.spriteURL = this.pokemon.sprites.front_default;
-        console.log(this.spriteURL)
+        this.typeSprites = await this.buildTypeSprites(this.typeNames);
         this.renderPokemonDetails();
     }
 
@@ -42,32 +42,33 @@ export default class PokemonDetails {
         return flavorText;
     }
 
-    getTypes(Types) {
-        let types = {};
+    getTypes() {
+        let Types = this.pokemon.types;
+        let typeNames = [];
         Types.forEach(typeData => {
             let typeName = typeData.type.name;
-            types.push(typeName);
+            typeNames.push(typeName);
         });
-
-        return types;
+        return typeNames;
     }
 
     // Function to display sprites of pokemons types
-    async buildTypeSprites(types) {
+    async buildTypeSprites(typeNames) {
         const typeData = new TypeData();
-        let typeSprites = ``;
-        types.forEach(typeData => {
-            let typeInfo = typeData.getTypeByName(typeData);
-            let typeSprites = `<img 
-                src="${typeInfo.spriteURL}" 
-                alt="Sprite of ${typeInfo.name}" 
-                height="40">`;
-            typeSprites += typeSprites;
-        });   
+        let typeSprites = [];
+        
+        // typeNames.forEach(typeName => {
+        //     let typeInfo = typeData.getTypeByName(typeName);
+        //     let typeSprites = `<img 
+        //         src="${typeInfo.spriteURL}" 
+        //         alt="Sprite of ${typeInfo.name}" 
+        //         height="40">`;
+        //     typeSprites += typeSprites;
+        // });   
         return typeSprites;
     }
 
-    async renderPokemonDetails() {
+    renderPokemonDetails() {
         document.getElementById('p-name').textContent = this.name.charAt(0).toUpperCase() + this.name.slice(1); 
         
         // Build type sprites

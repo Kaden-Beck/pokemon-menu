@@ -3,14 +3,15 @@ export default class TypeData {
     }
 
     async getTypeData() {
-        const response = await fetch('/json/types.json');
-        const typeData = await convertToJson(response);
-        this.typeData = typeData;
-        return typeData;
+        const response = await fetch('json/types.json');
+        const t = await convertToJson(response);
+        this.typeData = t;
+        console.log(t)
+        return t;
     }   
 
     async getTypeByName(typeName) {
-        const t =  this.typeData[typeName];
+        const t =  await this.typeData[typeName];
         return t;
     }
 

@@ -1,6 +1,6 @@
 import PokemonNutrients from "./PokemonNutrients";
 import TypeData from "./TypeData.mjs";
-const baseURL = import.meta.env.POKEMON_ENDPOINT
+// const baseURL = import.meta.env.POKEMON_ENDPOINT;
 
 
 function convertToJson(res) {
@@ -14,23 +14,23 @@ function convertToJson(res) {
 export default class PokemonDetails {
     constructor(pokemonId) {
         this.pokemonId = pokemonId;
-        this.endpointURL = `${baseURL}${this.pokemonId}`;
+        this.endpointURL = 'https://pokeapi.co/api/v2/pokemon/' + pokemonId;
     }
 
     async init() {
-        this.pokemon = await getPokemonData(this.endpointURL);
-        this.flavorText = await getFlavorText();
-        this.types = await getTypes(this.pokemon.types);
+        this.pokemon = await this.getPokemonData(this.endpointURL);
+        this.flavorText = await this.getFlavorText();
+        // this.types = await this.getTypes(this.pokemon.types);
         this.name = this.pokemon.name;
         this.weight = parseInt(this.pokemon.weight);
         this.spriteURL = this.pokemon.sprites.front_default;
+        console.log(this.spriteURL)
         this.renderPokemonDetails();
     }
 
     async getPokemonData(URL) {
         const response = await fetch(URL);
         const pokemonData = await convertToJson(response);
-
         return pokemonData;
     }
 
@@ -52,10 +52,6 @@ export default class PokemonDetails {
         return types;
     }
 
-    renderPokemonDetails() {
-        pokemonDetailsTemplate(this.pokemon);
-    }
-
     // Function to display sprites of pokemons types
     async buildTypeSprites(types) {
         const typeData = new TypeData();
@@ -70,25 +66,17 @@ export default class PokemonDetails {
         });   
         return typeSprites;
     }
+
+    async renderPokemonDetails() {
+        document.getElementById('p-name').textContent = this.name.charAt(0).toUpperCase() + this.name.slice(1); 
+        
+        // Build type sprites
+        const pokemonSprite = document.getElementById('p-sprite');
+        pokemonSprite.src = this.spriteURL;
+        pokemonSprite.alt = 'sprite of ' + this.name;
+
+        document.getElementById('flavor-text').textContent = this.flavorText;
+        // Build pokemon nutrient data
+    }
 }
 
-function pokemonDetailsTemplate(pokemon) {
-
-
-//   document.querySelector('h2').textContent = product.Category.charAt(0).toUpperCase() + product.Category.slice(1);
-//   document.querySelector('#p-brand').textContent = product.Brand.Name;
-//   document.querySelector('#p-name').textContent = product.NameWithoutBrand;
-
-//   const productImage = document.querySelector('#p-image');
-//   productImage.src = product.Images.PrimaryExtraLarge;
-//   productImage.alt = product.NameWithoutBrand;
-//   const euroPrice = new Intl.NumberFormat('de-DE',
-//     {
-//       style: 'currency', currency: 'EUR',
-//     }).format(Number(product.FinalPrice) * 0.85);
-//   document.querySelector('#p-price').textContent = `${euroPrice}`;
-//   document.querySelector('#p-color').textContent = product.Colors[0].ColorName;
-//   document.querySelector('#p-description').innerHTML = product.DescriptionHtmlSimple;
-
-//   document.querySelector('#add-to-cart').dataset.id = product.Id;
-}

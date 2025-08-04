@@ -29,6 +29,9 @@ header {
   }
 }
 
+footer {
+  margin: 1rem 8px;
+}
 
 .pokemon-details {
   display: grid;  
@@ -74,6 +77,7 @@ header {
 
       & h3 {
         text-align: center;
+        text-decoration: underline;
       }
 
       & p {

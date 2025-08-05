@@ -25,21 +25,27 @@
   <body>
     <header id="header-partial"></header>
     <main>
-      <h1>Pokémon Menu</h1>
-
+      <p>
+        Use this web app to get the imaginary nutritional information for a
+        given pokemon. Just enter a pokemon ID below to search:
+      </p>
       <form action="/pokemon/" method="GET">
-        <h2>Select a Gen I Pokémon by ID</h2>
         <fieldset>
-          <label for="pokemonID">Pokémon ID</label>
+          <legend>~Pokemon ID Search~</legend>
+          <label for="pokemonID">Pokémon ID:</label>
           <input
             type="number"
             name="pokemonID"
             id="pokemonID"
+            min="1"
+            max="1025"
+            step="1"
+            value="1"
             required
             autofocus
           />
         </fieldset>
-        <input type="submit" value="Pokémon Details" />
+        <input type="submit" value="Get Nutrition" class="anchor-button" />
       </form>
     </main>
     <footer id="footer-partial"></footer>

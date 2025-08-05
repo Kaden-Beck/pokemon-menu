@@ -1,9 +1,8 @@
 import TypeData from "./TypeData.mjs";
 import { getLocalStorage, convertToJson } from "./utilities.mjs";
 
-const USDAKey = 'TSg8QgplHdfokkjvTG6XOuAdBJmaHNOtb9kXha3F';
-const baseURL = 'https://api.nal.usda.gov/fdc/v1/food/';
-
+const USDAKey = "TSg8QgplHdfokkjvTG6XOuAdBJmaHNOtb9kXha3F";
+const baseURL = "https://api.nal.usda.gov/fdc/v1/food/";
 
 // GET data from USDA API
 async function getUSDAData(foodID) {
@@ -33,31 +32,30 @@ export default class PokemonNutrients {
 
   async buildPokemonNutrients() {
     await this.calculateNutrients();
-    this.totalCalories = (this.carbohydrates * 4.0) + (this.fats * 9.0) + (this.proteins * 4.0);
+    this.totalCalories =
+      this.carbohydrates * 4.0 + this.fats * 9.0 + this.proteins * 4.0;
 
     let display = `<h3>Nutritional Information</h3>
           <p>Pokemon Weight: ${this.weight} grams</p>
           <ul>
-            <strong>Nutrients by Weight:</strong>
+          <strong>Nutrients by Weight:</strong>
             <li>Carbs: ${this.carbohydrates.toFixed(2)} g</li>
             <li>Fat: ${this.fats.toFixed(2)} g</li>
             <li>Protein: ${this.proteins.toFixed(2)} g</li>
           </ul>
-          <p><strong>Total Calories:</strong> ${this.totalCalories.toFixed(2)} kCal</p>`
-          ;
+          <p><strong>Total Calories:</strong> ${this.totalCalories.toFixed(2)} kCal</p>`;
     return display;
   }
 
   async calculateNutrients() {
     const typeCount = parseInt(this.typeNames.length);
-    const typeData = await getLocalStorage('typeInfo');
-    
+    const typeData = await getLocalStorage("typeInfo");
+
     for (const typeName of this.typeNames) {
       let type = typeData[typeName];
       await this.getNutrientFactors(type.foodID);
     }
 
-    
     // Average Factors
     if (typeCount > 1) {
       this.carbFactor = parseFloat(this.carbFactor / typeCount);
@@ -77,7 +75,6 @@ export default class PokemonNutrients {
     this.carbFactor += foodData.foodNutrients[0].amount;
     this.proteinFactor += foodData.foodNutrients[1].amount;
     this.fatFactor += foodData.foodNutrients[2].amount;
-    
   }
 
   // Convert factor to real nutrients using Pokémon weight factor

@@ -95,19 +95,19 @@
     "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/emerald/16.png",
     "foodID": "2709234"
   },
-    "dark": {
+  "dark": {
     "name": "dark",
     "id": 17,
     "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/colosseum/17.png",
     "foodID": "2485864"
   },
-    "fairy": {
+  "fairy": {
     "name": "fairy",
     "id": 18,
     "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-vi/omega-ruby-alpha-sapphire/18.png",
     "foodID": "2710777"
   },
-    "stellar": {
+  "stellar": {
     "name": "stellar",
     "id": 19,
     "spriteURL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/19.png",

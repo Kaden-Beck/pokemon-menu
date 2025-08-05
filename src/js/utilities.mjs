@@ -65,3 +65,11 @@ export async function loadHeaderFooter() {
   const footerElement = document.getElementById('footer-partial');
   renderWithTemplate(footerTemplate, footerElement);
 }
+
+export function convertToJson(res) {
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("Bad Response");
+  }
+}

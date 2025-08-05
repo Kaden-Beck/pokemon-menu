@@ -1,15 +1,9 @@
 import TypeData from "./TypeData.mjs";
+import { getLocalStorage } from "./utilities.mjs";
 
 const USDAKey = import.meta.env.USDA_KEY;
 const baseURL = import.meta.env.USDA_ENDPOINT;
 
-function convertToJson(res) {
-  if (res.ok) {
-    return res.json();
-  } else {
-    throw new Error("Bad Response");
-  }
-}
 
 // GET data from USDA API
 async function getUSDAData(foodID) {
@@ -37,6 +31,14 @@ export default class PokemonNutrients {
     this.weightFactor = this.weight / 100;
     const TypeData = new TypeData();
     this.typeData = await TypeData.getTypeData();
+
+    // Makes sure TypeData was/is stored
+    let typeData = getLocalStorage('typeData');
+    if (!typeData) {
+      const t = new TypeData();
+      await t.init();
+      typeData = getLocalStorage('typeData');
+    }
 
     await this.calculateNutrients();
     this.totalCalories = this.carbohydrates + this.fats + this.proteins;

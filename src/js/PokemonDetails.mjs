@@ -1,3 +1,4 @@
+import { getLocalStorage } from "./utilities.mjs";
 import PokemonNutrients from "./PokemonNutrients";
 import TypeData from "./TypeData.mjs";
 // const baseURL = import.meta.env.POKEMON_ENDPOINT;
@@ -25,6 +26,8 @@ export default class PokemonDetails {
         this.weight = parseInt(this.pokemon.weight);
         this.spriteURL = this.pokemon.sprites.front_default;
         this.typeSprites = await this.buildTypeSprites(this.typeNames);
+        const pokemonNutrients = new PokemonNutrients(this.pokemon);
+
         this.renderPokemonDetails();
     }
 
@@ -54,30 +57,31 @@ export default class PokemonDetails {
 
     // Function to display sprites of pokemons types
     async buildTypeSprites(typeNames) {
-        const typeData = new TypeData();
-        let typeSprites = [];
-        
-        // typeNames.forEach(typeName => {
-        //     let typeInfo = typeData.getTypeByName(typeName);
-        //     let typeSprites = `<img 
-        //         src="${typeInfo.spriteURL}" 
-        //         alt="Sprite of ${typeInfo.name}" 
-        //         height="40">`;
-        //     typeSprites += typeSprites;
-        // });   
-        return typeSprites;
+        const t = new TypeData();
+        await t.init();
+        const typeData = getLocalStorage('typeInfo');
+        let typeSpriteHTML = [];
+
+        typeNames.forEach(typeName => {
+            let type = typeData[typeName];
+            typeSpriteHTML += `<img class="type-sprite" src="${type.spriteURL}" alt="Sprite of ${type.name}" height="20">`;
+        });   
+
+        return typeSpriteHTML;
     }
 
     renderPokemonDetails() {
+        // Pokemon Name
         document.getElementById('p-name').textContent = this.name.charAt(0).toUpperCase() + this.name.slice(1); 
-        
-        // Build type sprites
+        // Pokemon Sprite
         const pokemonSprite = document.getElementById('p-sprite');
         pokemonSprite.src = this.spriteURL;
         pokemonSprite.alt = 'sprite of ' + this.name;
-
+        // Build type sprites
+        document.getElementById('p-types').innerHTML = this.typeSprites
         document.getElementById('flavor-text').textContent = this.flavorText;
         // Build pokemon nutrient data
+        
     }
 }
 

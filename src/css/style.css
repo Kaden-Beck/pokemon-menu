@@ -53,6 +53,10 @@ footer {
     justify-self: center;
    }
 
+   & .type-sprite {
+    margin: 0 4px;
+   }
+
    & #flavor-text {
     text-align: center;
     grid-column: 1;

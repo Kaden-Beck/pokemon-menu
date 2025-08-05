@@ -36,12 +36,15 @@ export default class PokemonNutrients {
     this.totalCalories = (this.carbohydrates * 4.0) + (this.fats * 9.0) + (this.proteins * 4.0);
 
     let display = `<h3>Nutritional Information</h3>
+          <p>Pokemon Weight: ${this.weight} grams</p>
           <ul>
+            <strong>Nutrients by Weight:</strong>
             <li>Carbs: ${this.carbohydrates.toFixed(2)} g</li>
             <li>Fat: ${this.fats.toFixed(2)} g</li>
             <li>Protein: ${this.proteins.toFixed(2)} g</li>
-            <p><strong>Total Calories:</strong> ${this.totalCalories.toFixed(2)} kCal</p>
-          </ul>`;
+          </ul>
+          <p><strong>Total Calories:</strong> ${this.totalCalories.toFixed(2)} kCal</p>`
+          ;
     return display;
   }
 

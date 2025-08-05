@@ -88,7 +88,12 @@ export default class PokemonDetails {
         document.getElementById('p-types').innerHTML = this.typeSprites
         document.getElementById('flavor-text').textContent = this.flavorText;
         // Build pokemon nutrient data
-        document.getElementById('nutrition-facts').innerHTML = this.nutritionInformation;
+        document.getElementById('nutrition-facts').innerHTML = this.nutritionInformation;   
+        // Get links for forward and back menu
+        let previousPokemon = parseInt(this.pokemonId) - 1;
+        document.getElementById('previous').href = `http://localhost:5173/pokemon/?pokemonID=${previousPokemon}`
+        let nextPokemon = parseInt(this.pokemonId) + 1;
+        document.getElementById('next').href = `http://localhost:5173/pokemon/?pokemonID=${nextPokemon}`
     }
 }
 

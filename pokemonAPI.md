@@ -25,3 +25,8 @@ GET https://pokeapi.co/api/v2/pokemon-species/{ID} OR GET 'pokemon.species.url'
 
 pokemonSpecies.flavor_text_entries[1].flavor_text: Returns 1st flavor text for given species
 Entry.shape: Returns shape of pokemon
+
+Pokemon with issues: 
+62, 66, 67, 68, 106, 107, 122
+
+45 (Vileplume) : Flavor Text is Japanese

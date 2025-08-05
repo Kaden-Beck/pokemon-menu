@@ -26,7 +26,7 @@ export default class PokemonDetails {
         this.weight = parseInt(this.pokemon.weight);
         this.spriteURL = this.pokemon.sprites.front_default;
         this.typeSprites = await this.buildTypeSprites(this.typeNames);
-        const pokemonNutrients = new PokemonNutrients(this.pokemon);
+        this.nutritionInformation = await this.buildNutrientInformation();
 
         this.renderPokemonDetails();
     }
@@ -70,6 +70,13 @@ export default class PokemonDetails {
         return typeSpriteHTML;
     }
 
+    async buildNutrientInformation() {
+        const pokemonNutrients = new PokemonNutrients(this.pokemon, this.typeNames);
+        pokemonNutrients.init();
+
+        return await pokemonNutrients.buildPokemonNutrients();
+    }
+
     renderPokemonDetails() {
         // Pokemon Name
         document.getElementById('p-name').textContent = this.name.charAt(0).toUpperCase() + this.name.slice(1); 
@@ -81,7 +88,7 @@ export default class PokemonDetails {
         document.getElementById('p-types').innerHTML = this.typeSprites
         document.getElementById('flavor-text').textContent = this.flavorText;
         // Build pokemon nutrient data
-        
+        document.getElementById('nutrition-facts').innerHTML = this.nutritionInformation;
     }
 }
 

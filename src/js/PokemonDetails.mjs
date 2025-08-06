@@ -105,9 +105,9 @@ export default class PokemonDetails {
     // Get links for forward and back menu
     let previousPokemon = parseInt(this.pokemonId) - 1;
     document.getElementById("previous").href =
-      `http://localhost:5173/pokemon/?pokemonID=${previousPokemon}`;
+      '/pokemon/?pokemonID=' + previousPokemon;
     let nextPokemon = parseInt(this.pokemonId) + 1;
     document.getElementById("next").href =
-      `http://localhost:5173/pokemon/?pokemonID=${nextPokemon}`;
+      '/pokemon/?pokemonID=' + nextPokemon;
   }
 }

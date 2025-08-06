@@ -24,6 +24,7 @@ export default class PokemonDetails {
     this.name = this.pokemon.name;
     this.weight = parseInt(this.pokemon.weight);
     this.spriteURL = this.pokemon.sprites.front_default;
+    this.pokedexURL = "https://www.pokemon.com/us/pokedex/" + this.name;
     this.typeSprites = await this.buildTypeSprites(this.typeNames);
     this.nutritionInformation = await this.buildNutrientInformation();
 
@@ -63,8 +64,10 @@ export default class PokemonDetails {
 
     typeNames.forEach((typeName) => {
       let type = typeData[typeName];
-      typeSpriteHTML += `<img class="type-sprite" src="${type.spriteURL}" alt="Sprite of ${type.name}" height="20">`;
+      typeSpriteHTML += `<img class="type-sprite hover-zoom" src="${type.spriteURL}" alt="Sprite of ${type.name}" height="20">`;
     });
+
+    
 
     return typeSpriteHTML;
   }
@@ -76,14 +79,23 @@ export default class PokemonDetails {
     return await pokemonNutrients.buildPokemonNutrients();
   }
 
+  linkToPokedex(element) {
+    element.addEventListener("click", () => {
+      window.open(this.pokedexURL, "_blank");
+    });
+  }
+
   renderPokemonDetails() {
     // Pokemon Name
-    document.getElementById("p-name").textContent =
-      this.name.charAt(0).toUpperCase() + this.name.slice(1);
+    const nameElement = document.getElementById("p-name");
+    nameElement.textContent = this.name.charAt(0).toUpperCase() + this.name.slice(1);
+    this.linkToPokedex(nameElement);
     // Pokemon Sprite
     const pokemonSprite = document.getElementById("p-sprite");
     pokemonSprite.src = this.spriteURL;
     pokemonSprite.alt = "sprite of " + this.name;
+    pokemonSprite.class = "hover-spin";
+    this.linkToPokedex(pokemonSprite);
     // Build type sprites
     document.getElementById("p-types").innerHTML = this.typeSprites;
     document.getElementById("flavor-text").textContent = this.flavorText;

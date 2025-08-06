@@ -1,4 +1,3 @@
-import TypeData from "./TypeData.mjs";
 import { getLocalStorage, convertToJson } from "./utilities.mjs";
 
 const USDAKey = "TSg8QgplHdfokkjvTG6XOuAdBJmaHNOtb9kXha3F";

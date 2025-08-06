@@ -165,6 +165,18 @@ form {
   }
 }
 
+.hover-spin {
+  transition: transform 1s linear;
+  
+  &:hover {
+    transform: rotate(360deg);
+  }
+}
+
+.hover-zoom:hover {
+  transform: scale(1.05, 1.05);
+}
+
 @media (min-width: 37.5rem) {
   * {
     max-width: 800px;

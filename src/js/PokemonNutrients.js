@@ -22,7 +22,8 @@ export default class PokemonNutrients {
   }
 
   async init() {
-    this.weight = this.pokemonData.weight;
+    // weight is provided in hectograms
+    this.weight = this.pokemonData.weight * 100;
     this.carbFactor = 0;
     this.fatFactor = 0;
     this.proteinFactor = 0;

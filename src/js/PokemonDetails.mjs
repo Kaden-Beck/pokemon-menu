@@ -22,7 +22,7 @@ export default class PokemonDetails {
     this.flavorText = await this.getFlavorText();
     this.typeNames = this.getTypes();
     this.name = this.pokemon.name;
-    this.weight = parseInt(this.pokemon.weight);
+    // Weight is provided in Hectograms
     this.spriteURL = this.pokemon.sprites.front_default;
     this.pokedexURL = "https://www.pokemon.com/us/pokedex/" + this.name;
     this.typeSprites = await this.buildTypeSprites(this.typeNames);

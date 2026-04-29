@@ -1,4 +1,4 @@
-import { getTypes, PokemonTypeTuple } from './pokemonTypes';
+import { getTypeDetails, PokemonTypeDetails } from './pokemonTypes';
 
 const POKEMON_ENDPOINT = 'https://pokeapi.co/api/v2/pokemon/';
 const POKEDEX_URL = 'https://www.pokemon.com/us/pokedex/';
@@ -32,7 +32,7 @@ export interface PokemonDetails {
   pokedexEntry: string;
   name: string;
   flavorText: string;
-  types: PokemonTypeTuple[];
+  typeDetails: PokemonTypeDetails[];
   typeSprites: {};
   nutritionalData: {} | undefined;
 }
@@ -110,7 +110,7 @@ export async function getPokemonDetails(pokemonId: number) {
     pokedexEntry: pokemonData.sprites.front_default,
     name: pokemonData.name,
     flavorText: speciesData.flavorTextEntries[0].flavor_text,
-    types: getTypes(pokemonData),
+    typeDetails: getTypeDetails(pokemonData),
     typeSprites: {},
     nutritionalData: undefined,
   };

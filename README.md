@@ -1,7 +1,8 @@
 # Pokemon Menu Project
-## WDD 330 - Web Frontend Development II
 
-### Common Workflow Commands
+This a rewrite of an early JavaScript using Vite and Jest. I will be rewriting in TypeScript and adding playwright for better testing. 
+
+## Common Workflow Commands
 
 - `npm run lint` to run ESLint against your code to find errors.
 - `npm run format` to run Prettier to automatically format your code.
@@ -9,10 +10,4 @@
 - `npm run build` to build final files when you are ready to turn in.
 - `npm run preview` to have Vite preview local build directory
 
-
 ---
-
-### Netlify URL
-
-<!-- Need to ADD URL-->
-

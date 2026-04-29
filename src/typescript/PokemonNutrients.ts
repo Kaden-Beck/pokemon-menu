@@ -1,4 +1,4 @@
-import { getLocalStorage, convertToJson } from './utilities.mjs';
+import { getLocalStorage, convertToJson } from './utilities.ts';
 
 const USDAKey = 'TSg8QgplHdfokkjvTG6XOuAdBJmaHNOtb9kXha3F';
 const baseURL = 'https://api.nal.usda.gov/fdc/v1/food/';

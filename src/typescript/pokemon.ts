@@ -1,5 +1,5 @@
-import { loadHeaderFooter, getParam } from './utilities.mjs';
-import PokemonDetails from './PokemonDetails.mjs';
+import { loadHeaderFooter, getParam } from './utilities.ts';
+import PokemonDetails from './PokemonDetails.ts';
 // import PokemonNutrients from "./PokemonNutrients";
 // import TypeData from "./TypeData.mjs";
 

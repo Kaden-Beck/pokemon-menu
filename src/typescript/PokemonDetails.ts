@@ -1,6 +1,6 @@
-import { getLocalStorage } from './utilities.mjs';
-import PokemonNutrients from './PokemonNutrients';
-import TypeData from './TypeData.mjs';
+import { getLocalStorage } from './utilities.ts';
+import PokemonNutrients from './PokemonNutrients.ts';
+import TypeData from './TypeData.ts';
 // const baseURL = import.meta.env.POKEMON_ENDPOINT;
 
 function convertToJson(res) {

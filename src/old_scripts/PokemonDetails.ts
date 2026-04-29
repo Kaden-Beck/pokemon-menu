@@ -1,6 +1,6 @@
-import { getLocalStorage } from './utilities.ts';
-import PokemonNutrients from './PokemonNutrients.ts';
-import TypeData from './TypeData.ts';
+import { getLocalStorage } from '../utilities.js';
+import PokemonNutrients from '../PokemonNutrients.js';
+import TypeData from '../TypeData.js';
 // const baseURL = import.meta.env.POKEMON_ENDPOINT;
 
 function convertToJson(res) {
@@ -11,8 +11,14 @@ function convertToJson(res) {
   }
 }
 
+export interface PokemonDetails_ {
+  pokemonId: string;
+  endpointURL: string;
+  pokemon: unknown;
+}
+
 export default class PokemonDetails {
-  constructor(pokemonId) {
+  constructor(pokemonId: string) {
     this.pokemonId = pokemonId;
     this.endpointURL = 'https://pokeapi.co/api/v2/pokemon/' + pokemonId;
   }

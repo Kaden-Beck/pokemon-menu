@@ -1,4 +1,4 @@
-import { convertToJson, setLocalStorage } from './utilities.ts';
+import { convertToJson, setLocalStorage } from '../utilities.js';
 
 export default class TypeData {
   constructor() {}

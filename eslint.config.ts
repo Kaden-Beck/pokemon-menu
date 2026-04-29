@@ -101,6 +101,13 @@ const config: Config[] = defineConfig([
       'import/extensions': 0,
     },
   },
+  {
+    files: ['src/scripts/**'],
+    rules: {
+      'import/no-unresolved': 0,
+      'import/extensions': 0,
+    },
+  },
 ]);
 
 export default config;

@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+
+# Build
+dist/
+.cache/
+
+# Output
+coverage/
+.nyc_output/
+
+# Test
+playwright-report/
+test-results/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local

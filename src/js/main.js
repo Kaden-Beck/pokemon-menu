@@ -1,4 +1,4 @@
-import { loadHeaderFooter } from "./utilities.mjs";
+import { loadHeaderFooter } from './utilities.mjs';
 
 loadHeaderFooter();
 

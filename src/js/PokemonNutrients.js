@@ -1,14 +1,14 @@
-import { getLocalStorage, convertToJson } from "./utilities.mjs";
+import { getLocalStorage, convertToJson } from './utilities.mjs';
 
-const USDAKey = "TSg8QgplHdfokkjvTG6XOuAdBJmaHNOtb9kXha3F";
-const baseURL = "https://api.nal.usda.gov/fdc/v1/food/";
+const USDAKey = 'TSg8QgplHdfokkjvTG6XOuAdBJmaHNOtb9kXha3F';
+const baseURL = 'https://api.nal.usda.gov/fdc/v1/food/';
 
 // GET data from USDA API
 async function getUSDAData(foodID) {
   const endpointURL =
     baseURL +
     foodID +
-    "?format=abridged&nutrients=204&nutrients=205&nutrients=203&api_key=" +
+    '?format=abridged&nutrients=204&nutrients=205&nutrients=203&api_key=' +
     USDAKey;
   const response = await fetch(endpointURL);
   const foodData = await convertToJson(response);
@@ -32,8 +32,7 @@ export default class PokemonNutrients {
 
   async buildPokemonNutrients() {
     await this.calculateNutrients();
-    this.totalCalories =
-      this.carbohydrates * 4.0 + this.fats * 9.0 + this.proteins * 4.0;
+    this.totalCalories = this.carbohydrates * 4.0 + this.fats * 9.0 + this.proteins * 4.0;
 
     let display = `<h3>Nutritional Information</h3>
           <p>Pokemon Weight: ${this.weight} grams</p>
@@ -49,7 +48,7 @@ export default class PokemonNutrients {
 
   async calculateNutrients() {
     const typeCount = parseInt(this.typeNames.length);
-    const typeData = await getLocalStorage("typeInfo");
+    const typeData = await getLocalStorage('typeInfo');
 
     for (const typeName of this.typeNames) {
       let type = typeData[typeName];

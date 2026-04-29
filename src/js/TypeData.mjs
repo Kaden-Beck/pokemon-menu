@@ -1,19 +1,15 @@
-import {
-  convertToJson,
-  setLocalStorage,
-  getLocalStorage,
-} from "./utilities.mjs";
+import { convertToJson, setLocalStorage, getLocalStorage } from './utilities.mjs';
 
 export default class TypeData {
   constructor() {}
 
   async init() {
     const typeData = await this.getTypeData();
-    setLocalStorage("typeInfo", typeData);
+    setLocalStorage('typeInfo', typeData);
   }
 
   async getTypeData() {
-    const response = await fetch("/json/types.json");
+    const response = await fetch('/json/types.json');
     return await convertToJson(response);
   }
 

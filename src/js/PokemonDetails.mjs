@@ -1,20 +1,20 @@
-import { getLocalStorage } from "./utilities.mjs";
-import PokemonNutrients from "./PokemonNutrients";
-import TypeData from "./TypeData.mjs";
+import { getLocalStorage } from './utilities.mjs';
+import PokemonNutrients from './PokemonNutrients';
+import TypeData from './TypeData.mjs';
 // const baseURL = import.meta.env.POKEMON_ENDPOINT;
 
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
   } else {
-    throw new Error("Bad Response");
+    throw new Error('Bad Response');
   }
 }
 
 export default class PokemonDetails {
   constructor(pokemonId) {
     this.pokemonId = pokemonId;
-    this.endpointURL = "https://pokeapi.co/api/v2/pokemon/" + pokemonId;
+    this.endpointURL = 'https://pokeapi.co/api/v2/pokemon/' + pokemonId;
   }
 
   async init() {
@@ -24,7 +24,7 @@ export default class PokemonDetails {
     this.name = this.pokemon.name;
     // Weight is provided in Hectograms
     this.spriteURL = this.pokemon.sprites.front_default;
-    this.pokedexURL = "https://www.pokemon.com/us/pokedex/" + this.name;
+    this.pokedexURL = 'https://www.pokemon.com/us/pokedex/' + this.name;
     this.typeSprites = await this.buildTypeSprites(this.typeNames);
     this.nutritionInformation = await this.buildNutrientInformation();
 
@@ -59,15 +59,13 @@ export default class PokemonDetails {
   async buildTypeSprites(typeNames) {
     const t = new TypeData();
     await t.init();
-    const typeData = getLocalStorage("typeInfo");
+    const typeData = getLocalStorage('typeInfo');
     let typeSpriteHTML = [];
 
     typeNames.forEach((typeName) => {
       let type = typeData[typeName];
       typeSpriteHTML += `<img class="type-sprite hover-zoom" src="${type.spriteURL}" alt="Sprite of ${type.name}" height="20">`;
     });
-
-    
 
     return typeSpriteHTML;
   }
@@ -80,34 +78,31 @@ export default class PokemonDetails {
   }
 
   linkToPokedex(element) {
-    element.addEventListener("click", () => {
-      window.open(this.pokedexURL, "_blank");
+    element.addEventListener('click', () => {
+      window.open(this.pokedexURL, '_blank');
     });
   }
 
   renderPokemonDetails() {
     // Pokemon Name
-    const nameElement = document.getElementById("p-name");
+    const nameElement = document.getElementById('p-name');
     nameElement.textContent = this.name.charAt(0).toUpperCase() + this.name.slice(1);
     this.linkToPokedex(nameElement);
     // Pokemon Sprite
-    const pokemonSprite = document.getElementById("p-sprite");
+    const pokemonSprite = document.getElementById('p-sprite');
     pokemonSprite.src = this.spriteURL;
-    pokemonSprite.alt = "sprite of " + this.name;
-    pokemonSprite.class = "hover-spin";
+    pokemonSprite.alt = 'sprite of ' + this.name;
+    pokemonSprite.class = 'hover-spin';
     this.linkToPokedex(pokemonSprite);
     // Build type sprites
-    document.getElementById("p-types").innerHTML = this.typeSprites;
-    document.getElementById("flavor-text").textContent = this.flavorText;
+    document.getElementById('p-types').innerHTML = this.typeSprites;
+    document.getElementById('flavor-text').textContent = this.flavorText;
     // Build pokemon nutrient data
-    document.getElementById("nutrition-facts").innerHTML =
-      this.nutritionInformation;
+    document.getElementById('nutrition-facts').innerHTML = this.nutritionInformation;
     // Get links for forward and back menu
     let previousPokemon = parseInt(this.pokemonId) - 1;
-    document.getElementById("previous").href =
-      '/pokemon/?pokemonID=' + previousPokemon;
+    document.getElementById('previous').href = '/pokemon/?pokemonID=' + previousPokemon;
     let nextPokemon = parseInt(this.pokemonId) + 1;
-    document.getElementById("next").href =
-      '/pokemon/?pokemonID=' + nextPokemon;
+    document.getElementById('next').href = '/pokemon/?pokemonID=' + nextPokemon;
   }
 }

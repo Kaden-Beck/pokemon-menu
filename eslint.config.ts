@@ -52,7 +52,32 @@ const config: Config[] = defineConfig([
     },
   },
   {
+    files: ['eslint.config.ts', 'vite.config.ts', 'playwright.config.ts'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tsPlugin as any,
+      import: fixupPluginRules(_import),
+    },
+    rules: {
+      ...tsPlugin.configs.recommended.rules,
+      '@typescript-eslint/no-explicit-any': 0,
+      'import/no-unresolved': 0,
+      'import/named': 0,
+    },
+  },
+  {
     files: ['**/*.ts', '**/*.tsx'],
+    ignores: ['eslint.config.ts', 'vite.config.ts', 'playwright.config.ts'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {

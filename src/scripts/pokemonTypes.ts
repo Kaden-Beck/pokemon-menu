@@ -14,6 +14,8 @@ interface TypeInfo {
   foodID: string;
 }
 
+export type spriteInfo = [name: string, url: string];
+
 type TypeName =
   | 'normal'
   | 'fighting'
@@ -35,7 +37,7 @@ type TypeName =
   | 'fairy'
   | 'stellar';
 
-const typeMap: Record<TypeName, TypeInfo> = {
+export const typeMap: Record<TypeName, TypeInfo> = {
   normal: {
     name: 'normal',
     id: 1,
@@ -189,4 +191,13 @@ export function getTypeDetails(pokemonData: PokemonData): PokemonTypeDetails[] {
   }
 
   return typeDetailList;
+}
+
+export function getTypeSprites(typeDetails: PokemonTypeDetails[]): spriteInfo[] {
+  const typeSprites: spriteInfo[] = [];
+  for (const typeDetail of typeDetails) {
+    typeSprites.push([typeDetail.name, typeDetail.sprite]);
+  }
+
+  return typeSprites;
 }

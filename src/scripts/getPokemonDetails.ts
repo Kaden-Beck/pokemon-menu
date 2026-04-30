@@ -1,4 +1,4 @@
-import { getTypeDetails, PokemonTypeDetails } from './pokemonTypes';
+import { getTypeDetails, getTypeSprites, PokemonTypeDetails, spriteInfo } from './pokemonTypes';
 
 const POKEMON_ENDPOINT = 'https://pokeapi.co/api/v2/pokemon/';
 const POKEDEX_URL = 'https://www.pokemon.com/us/pokedex/';
@@ -33,7 +33,7 @@ export interface PokemonDetails {
   name: string;
   flavorText: string;
   typeDetails: PokemonTypeDetails[];
-  typeSprites: {};
+  typeSprites: spriteInfo[];
   nutritionalData: {} | undefined;
 }
 
@@ -59,10 +59,7 @@ function isSpeciesData(value: unknown): value is SpeciesData {
 }
 
 async function parsePokemonResponse(response: Response): Promise<PokemonData> {
-  if (!response.ok) {
-    throw new Error('Bad response');
-  }
-  const result: unknown = response.json();
+  const result: unknown = await response.json();
   if (!isPokemonData(result)) {
     throw new Error('Response body did not match Pokemon');
   }
@@ -74,6 +71,10 @@ async function fetchPokemon(pokemonURL: string): Promise<PokemonData> {
     method: 'GET',
     mode: 'cors',
   });
+
+  if (!response.ok) {
+    throw new Error(`Bad response. ${response.statusText}: ${response.body}`);
+  }
 
   return parsePokemonResponse(response);
 }
@@ -102,6 +103,7 @@ export async function getPokemonDetails(pokemonId: number) {
 
   const pokemonData: PokemonData = await fetchPokemon(pokemonURL);
   const speciesData: SpeciesData = await fetchSpeciesData(pokemonData.species);
+  const typeDetails: PokemonTypeDetails[] = getTypeDetails(pokemonData);
 
   const pokemon: PokemonDetails = {
     id: pokemonId,
@@ -110,8 +112,8 @@ export async function getPokemonDetails(pokemonId: number) {
     pokedexEntry: pokemonData.sprites.front_default,
     name: pokemonData.name,
     flavorText: speciesData.flavorTextEntries[0].flavor_text,
-    typeDetails: getTypeDetails(pokemonData),
-    typeSprites: {},
+    typeDetails: typeDetails,
+    typeSprites: getTypeSprites(typeDetails),
     nutritionalData: undefined,
   };
 

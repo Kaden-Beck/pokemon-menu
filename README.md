@@ -12,7 +12,7 @@
 
 ---
 
-### Netlify URL
-
-<!-- Need to ADD URL-->
-
+## Motivation
+## Quick Start
+## Usage 
+## Contributing
